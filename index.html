@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculator app</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+    <link rel="stylesheet" href="/main.css" />
+    <script src="/app.js" defer></script>
+  </head>
+  <body>
+    <main>
+      <div class="calculator-wrapper">
+        <div class="calculator">
+          <header class="calculator-header">
+            <h1 class="calculator-title">calc</h1>
+            <div class="theme-container">
+              <span class="theme-text">THEME</span>
+              <form class="theme-form">
+                <div class="radio-buttons">
+                  <div class="radio-item">
+                    <label for="light-theme" class="theme-label">1</label>
+                    <input
+                      class="theme-input"
+                      type="radio"
+                      value="light-theme"
+                      id="light-theme"
+                      name="theme"
+                    />
+                  </div>
+                  <div class="radio-item">
+                    <label for="dark-theme" class="theme-label">2</label>
+                    <input
+                      class="theme-input"
+                      type="radio"
+                      value="dark-theme"
+                      id="dark-theme"
+                      name="theme"
+                    />
+                  </div>
+                  <div class="radio-item">
+                    <label for="cool-theme" class="theme-label">3</label>
+                    <input
+                      class="theme-input"
+                      type="radio"
+                      value="cool-theme"
+                      id="cool-theme"
+                      name="theme"
+                    />
+                  </div>
+                </div>
+              </form>
+            </div>
+          </header>
+          <div class="result-screen">
+            <span class="result-text">0</span>
+          </div>
+          <div class="keypad">
+            <button class="key key-number">
+              <span class="key-text">7</span>
+            </button>
+            <button class="key key-number">
+              <span class="key-text">8</span>
+            </button>
+            <button class="key key-number">
+              <span class="key-text">9</span>
+            </button>
+            <button class="key key-del">
+              <span class="key-text">DEL</span>
+            </button>
+            <button class="key key-number">
+              <span class="key-text">4</span>
+            </button>
+            <button class="key key-number">
+              <span class="key-text">5</span>
+            </button>
+            <button class="key key-number">
+              <span class="key-text">6</span>
+            </button>
+            <button class="key key-operator key-addition">
+              <span class="key-text">+</span>
+            </button>
+            <button class="key key-number">
+              <span class="key-text">1</span></button
+            ><button class="key key-number">
+              <span class="key-text">2</span>
+            </button>
+            <button class="key key-number">
+              <span class="key-text">3</span></button
+            ><button class="key key-operator key-subtraction">
+              <span class="key-text">-</span>
+            </button>
+            <button class="key key-decimal">
+              <span class="key-text">.</span></button
+            ><button class="key key-number">
+              <span class="key-text">0</span>
+            </button>
+            <button class="key key-operator key-division">
+              <span class="key-text">/</span></button
+            ><button class="key key-operator key-multiplication">
+              <span class="key-text">x</span>
+            </button>
+            <button class="key key-reset">
+              <span class="key-text">RESET</span>
+            </button>
+            <button class="key key-equal">
+              <span class="key-text">=</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
