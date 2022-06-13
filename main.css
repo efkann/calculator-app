@@ -1,4 +1,6 @@
 :root {
+  --margin-calculator-top-bottom: 18px;
+  --margin-calculator-left-right: 16px;
   --prefers-dark: false;
   --color-main-bg: hsl(0, 0%, 90%);
   --color-keypad-bg: hsl(0, 5%, 81%);
@@ -127,7 +129,8 @@ main {
 }
 
 .calculator {
-  margin: 18px; /* Make sure absolute labels stay in viewport and on mobile we have gap on sides */
+  margin: var(--margin-calculator-top-bottom)
+    var(--margin-calculator-left-right);
   border-radius: 8px;
   max-width: 430px;
 }
@@ -199,12 +202,17 @@ main {
   display: flex;
   flex-direction: row-reverse;
   flex-wrap: nowrap;
-  word-wrap: break-word;
-}
-.result-text {
-  overflow: hidden;
-  text-overflow: ellipsis;
   white-space: nowrap;
+  overflow-x: auto; /* Allow to scroll horizontally when screen text is too long */
+  -ms-overflow-style: none; /* Hide scrollbars Internet Explorer, Edge */
+  scrollbar-width: none; /*Hide scrollbars Firefox */
+}
+
+.result-screen::-webkit-scrollbar {
+  display: none; /* Hide scrollbars Chrome, Safari, and Opera */
+}
+
+.result-text {
   font-size: 2.75rem;
 }
 .keypad {
@@ -222,7 +230,7 @@ main {
   color: var(--color-primary-text);
   border: 0;
   margin: 0;
-  padding: 4px 16px;
+  padding: 4px 24px;
   border-radius: 8px;
   box-shadow: 0 3px var(--color-tertiary-key-shadow);
 }
@@ -263,9 +271,16 @@ main {
   margin: 0 8px;
 }
 
-@media (min-width: 768px) {
+@media (max-width: 480px) {
+  /* Fix issues with 320px-360px width mobiles */
+  :root {
+    --margin-calculator-left-right: 4px;
+  }
   .key {
-    padding: 0px 24px;
+    padding: 4px 12px;
+  }
+  .calculator {
+    max-width: calc(100% - calc(var(--margin-calculator-left-right) * 2));
   }
 }
 
