@@ -52,12 +52,18 @@ function handleReset() {
   if (isAtInitialState()) {
     return;
   }
+  if (result.classList.contains('result-calculated')) {
+    result.classList.remove('result-calculated');
+  }
   result.innerHTML = initialState;
 }
 
 function handleDelete() {
   if (isAtInitialState()) {
     return;
+  }
+  if (result.classList.contains('result-calculated')) {
+    result.classList.remove('result-calculated');
   }
   if (result.innerText.length === 1) {
     result.innerHTML = initialState;
@@ -97,7 +103,7 @@ function handleEquals() {
   }
   const calculationStr = result.innerText.replace(/x/g, '*');
   if (isNaN(eval(calculationStr)) || !isFinite(eval(calculationStr))) {
-    result.innerHTML = initialState; // Handle cases like zero division
+    result.innerHTML = initialState; // Avoid zero division
     return;
   }
   const resultStr = String(eval(calculationStr));
