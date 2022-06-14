@@ -133,7 +133,7 @@ function handleDecimalPoint() {
   numberTextEl.classList.add('number-text');
   numberTextEl.innerText = decPointKey.innerText;
   if (result?.lastElementChild?.innerText === '.') {
-    return; // There cant be two decimal points side to side.
+    return; // Avoid two decimal points side to side.
   }
   appendToScreen(numberTextEl.outerHTML);
 }

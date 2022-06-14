@@ -294,7 +294,8 @@ main {
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
+  /* Only applies if user not used switch theme button */
+  html:not([data-theme]) :root {
     --prefers-dark: true;
     --color-main-bg: hsl(222, 26%, 31%);
     --color-keypad-bg: hsl(223, 31%, 20%);
