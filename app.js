@@ -15,13 +15,15 @@ const prefersDark = getComputedStyle(document.documentElement).getPropertyValue(
 const prefersTheme = localStorage.getItem('userTheme');
 const themes = ['light', 'dark', 'cool'];
 
-if (prefersTheme !== null) {
-  document.documentElement.dataset.theme = prefersTheme;
-  themeInputs[themes.indexOf(prefersTheme)].checked = true;
-} else if (prefersDark.trim() === 'true') {
-  themeInputs[1].checked = true;
-} else {
-  themeInputs[0].checked = true;
+function applyUserPreferences() {
+  if (prefersTheme !== null) {
+    document.documentElement.dataset.theme = prefersTheme;
+    themeInputs[themes.indexOf(prefersTheme)].checked = true;
+  } else if (prefersDark.trim() === 'true') {
+    themeInputs[1].checked = true;
+  } else {
+    themeInputs[0].checked = true;
+  }
 }
 
 function resetResultText() {
@@ -141,30 +143,39 @@ function switchTheme(newTheme) {
   localStorage.setItem('userTheme', newTheme);
 }
 
-resetKey.addEventListener('click', handleReset);
-deleteKey.addEventListener('click', handleDelete);
-equalsKey.addEventListener('click', handleEquals);
-decPointKey.addEventListener('click', handleDecimalPoint);
+function attachEventListeners() {
+  resetKey.addEventListener('click', handleReset);
+  deleteKey.addEventListener('click', handleDelete);
+  equalsKey.addEventListener('click', handleEquals);
+  decPointKey.addEventListener('click', handleDecimalPoint);
 
-for (const numberKey of numberKeys) {
-  const numberTextEl = document.createElement('span');
-  numberTextEl.classList.add('number-text');
-  numberTextEl.innerText = numberKey.innerText;
-  numberKey.addEventListener('click', () =>
-    appendToScreen(numberTextEl.outerHTML)
-  );
+  for (const numberKey of numberKeys) {
+    const numberTextEl = document.createElement('span');
+    numberTextEl.classList.add('number-text');
+    numberTextEl.innerText = numberKey.innerText;
+    numberKey.addEventListener('click', () =>
+      appendToScreen(numberTextEl.outerHTML)
+    );
+  }
+  for (const operatorKey of operatorKeys) {
+    const operator = operatorKey.innerText;
+    const operatorTextEl = document.createElement('span');
+    operatorTextEl.classList.add('operator-text');
+    operatorTextEl.innerText = operatorKey.innerText;
+    operatorKey.addEventListener('click', () =>
+      handleOperatorCases(operator, operatorTextEl)
+    );
+  }
+  for (const themeInput of themeInputs) {
+    themeInput.addEventListener('change', (e) => {
+      switchTheme(e.target.value);
+    });
+  }
 }
-for (const operatorKey of operatorKeys) {
-  const operator = operatorKey.innerText;
-  const operatorTextEl = document.createElement('span');
-  operatorTextEl.classList.add('operator-text');
-  operatorTextEl.innerText = operatorKey.innerText;
-  operatorKey.addEventListener('click', () =>
-    handleOperatorCases(operator, operatorTextEl)
-  );
+
+function initApp() {
+  applyUserPreferences();
+  attachEventListeners();
 }
-for (const themeInput of themeInputs) {
-  themeInput.addEventListener('change', (e) => {
-    switchTheme(e.target.value);
-  });
-}
+
+initApp();
