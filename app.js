@@ -17,7 +17,6 @@ const themes = ['light', 'dark', 'cool'];
 
 function applyUserPreferences() {
   if (prefersTheme !== null) {
-    document.documentElement.dataset.theme = prefersTheme;
     themeInputs[themes.indexOf(prefersTheme)].checked = true;
   } else if (prefersDark.trim() === 'true') {
     themeInputs[1].checked = true;

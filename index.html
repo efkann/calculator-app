@@ -20,6 +20,15 @@
     <script src="/app.js" defer></script>
   </head>
   <body>
+    <script>
+      function applyPreferredTheme() {
+        if (localStorage.getItem('userTheme') !== null) {
+          document.documentElement.dataset.theme =
+            localStorage.getItem('userTheme');
+        }
+      }
+      applyPreferredTheme();
+    </script>
     <main>
       <div class="calculator-wrapper">
         <div class="calculator">
