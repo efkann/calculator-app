@@ -6,16 +6,10 @@ const deleteKey = document.querySelector('.key-del');
 const resetKey = document.querySelector('.key-reset');
 const equalsKey = document.querySelector('.key-equal');
 const themeInputs = document.querySelectorAll('.theme-input');
+
 const prefersDark = getComputedStyle(document.documentElement).getPropertyValue(
   '--prefers-dark'
 );
-
-if (prefersDark.trim() === 'true') {
-  themeInputs[1].checked = true;
-} else {
-  themeInputs[0].checked = true;
-}
-
 const initialState = '0';
 const themes = ['light-theme', 'dark-theme', 'cool-theme'];
 const themeValues = {
@@ -23,6 +17,18 @@ const themeValues = {
   'dark-theme': 'dark',
   'cool-theme': 'cool',
 };
+
+if (prefersDark.trim() === 'true') {
+  themeInputs[1].checked = true;
+} else {
+  themeInputs[0].checked = true;
+}
+
+function resetResultText() {
+  result.classList.remove('result-calculated');
+  result.removeAttribute('tabindex');
+  result.removeAttribute('aria-label');
+}
 
 function writeToScreen(data) {
   result.innerHTML = data;
@@ -38,7 +44,7 @@ function appendToScreen(data) {
     return;
   }
   if (result.classList.contains('result-calculated')) {
-    result.classList.remove('result-calculated');
+    resetResultText();
     if (!data.includes('operator-text')) {
       writeToScreen(data);
     } else {
@@ -53,7 +59,7 @@ function handleReset() {
     return;
   }
   if (result.classList.contains('result-calculated')) {
-    result.classList.remove('result-calculated');
+    resetResultText();
   }
   result.innerHTML = initialState;
 }
@@ -63,7 +69,7 @@ function handleDelete() {
     return;
   }
   if (result.classList.contains('result-calculated')) {
-    result.classList.remove('result-calculated');
+    resetResultText();
   }
   if (result.innerText.length === 1) {
     result.innerHTML = initialState;
@@ -106,15 +112,18 @@ function handleEquals() {
     result.innerHTML = initialState; // Avoid zero division
     return;
   }
-  const resultStr = String(eval(calculationStr));
+  const resultStr = String(eval(calculationStr)); // I'm lazy so, eval works.
   result.innerHTML = '';
   result.classList.add('result-calculated');
+  result.setAttribute('tabindex', 0);
+  result.setAttribute('aria-label', 'Calculated result is ' + resultStr);
   for (let i = 0; i < resultStr.length; i++) {
     const numberTextEl = document.createElement('span');
     numberTextEl.classList.add('number-text');
     numberTextEl.innerText = resultStr[i];
     result.appendChild(numberTextEl);
   }
+  result.focus();
 }
 
 function handleDecimalPoint() {

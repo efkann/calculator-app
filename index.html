@@ -30,7 +30,9 @@
               <form class="theme-form">
                 <div class="radio-buttons">
                   <div class="radio-item">
-                    <label for="light-theme" class="theme-label">1</label>
+                    <label for="light-theme" class="theme-label"
+                      ><span class="sr-only">Theme</span>1</label
+                    >
                     <input
                       class="theme-input"
                       type="radio"
@@ -40,7 +42,9 @@
                     />
                   </div>
                   <div class="radio-item">
-                    <label for="dark-theme" class="theme-label">2</label>
+                    <label for="dark-theme" class="theme-label"
+                      ><span class="sr-only">Theme</span>2</label
+                    >
                     <input
                       class="theme-input"
                       type="radio"
@@ -50,7 +54,9 @@
                     />
                   </div>
                   <div class="radio-item">
-                    <label for="cool-theme" class="theme-label">3</label>
+                    <label for="cool-theme" class="theme-label"
+                      ><span class="sr-only">Theme</span>3</label
+                    >
                     <input
                       class="theme-input"
                       type="radio"
@@ -64,7 +70,7 @@
             </div>
           </header>
           <div class="result-screen">
-            <span class="result-text">0</span>
+            <h2 class="result-text">0</h2>
           </div>
           <div class="keypad">
             <button class="key key-number">
@@ -76,7 +82,7 @@
             <button class="key key-number">
               <span class="key-text">9</span>
             </button>
-            <button class="key key-del">
+            <button class="key key-del" aria-label="delete">
               <span class="key-text">DEL</span>
             </button>
             <button class="key key-number">
@@ -88,7 +94,7 @@
             <button class="key key-number">
               <span class="key-text">6</span>
             </button>
-            <button class="key key-operator key-addition">
+            <button class="key key-operator key-addition" aria-label="plus">
               <span class="key-text">+</span>
             </button>
             <button class="key key-number">
@@ -98,23 +104,29 @@
             </button>
             <button class="key key-number">
               <span class="key-text">3</span></button
-            ><button class="key key-operator key-subtraction">
+            ><button
+              class="key key-operator key-subtraction"
+              aria-label="minus"
+            >
               <span class="key-text">-</span>
             </button>
-            <button class="key key-decimal">
+            <button class="key key-decimal" aria-label="decimal separator">
               <span class="key-text">.</span></button
             ><button class="key key-number">
               <span class="key-text">0</span>
             </button>
-            <button class="key key-operator key-division">
+            <button class="key key-operator key-division" aria-label="divide">
               <span class="key-text">/</span></button
-            ><button class="key key-operator key-multiplication">
+            ><button
+              class="key key-operator key-multiplication"
+              aria-label="times"
+            >
               <span class="key-text">x</span>
             </button>
             <button class="key key-reset">
               <span class="key-text">RESET</span>
             </button>
-            <button class="key key-equal">
+            <button class="key key-equal" aria-label="Calculate">
               <span class="key-text">=</span>
             </button>
           </div>
