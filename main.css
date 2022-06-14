@@ -272,7 +272,7 @@ main {
 }
 
 @media (max-width: 480px) {
-  /* Fix issues with 320px-360px width mobiles */
+  /* Fix issues with 320px-360px width mobile viewports */
   :root {
     --margin-calculator-left-right: 4px;
   }
@@ -280,7 +280,7 @@ main {
     padding: 4px 12px;
   }
   .calculator {
-    max-width: calc(100% - calc(var(--margin-calculator-left-right) * 2));
+    width: calc(100% - calc(var(--margin-calculator-left-right) * 2));
   }
 }
 
