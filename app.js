@@ -1,3 +1,5 @@
+const initialState = '0';
+
 const result = document.querySelector('.result-text');
 const numberKeys = document.querySelectorAll('.key-number');
 const operatorKeys = document.querySelectorAll('.key-operator');
@@ -10,15 +12,13 @@ const themeInputs = document.querySelectorAll('.theme-input');
 const prefersDark = getComputedStyle(document.documentElement).getPropertyValue(
   '--prefers-dark'
 );
-const initialState = '0';
-const themes = ['light-theme', 'dark-theme', 'cool-theme'];
-const themeValues = {
-  'light-theme': 'light',
-  'dark-theme': 'dark',
-  'cool-theme': 'cool',
-};
+const prefersTheme = localStorage.getItem('userTheme');
+const themes = ['light', 'dark', 'cool'];
 
-if (prefersDark.trim() === 'true') {
+if (prefersTheme !== null) {
+  document.documentElement.dataset.theme = prefersTheme;
+  themeInputs[themes.indexOf(prefersTheme)].checked = true;
+} else if (prefersDark.trim() === 'true') {
   themeInputs[1].checked = true;
 } else {
   themeInputs[0].checked = true;
@@ -109,7 +109,7 @@ function handleEquals() {
   }
   const calculationStr = result.innerText.replace(/x/g, '*');
   if (isNaN(eval(calculationStr)) || !isFinite(eval(calculationStr))) {
-    result.innerHTML = initialState; // Avoid zero division
+    result.innerHTML = initialState; // Avoid zero division and infinity
     return;
   }
   const resultStr = String(eval(calculationStr)); // I'm lazy so, eval works.
@@ -137,7 +137,8 @@ function handleDecimalPoint() {
 }
 
 function switchTheme(newTheme) {
-  document.documentElement.dataset.theme = themeValues[newTheme];
+  document.documentElement.dataset.theme = newTheme;
+  localStorage.setItem('userTheme', newTheme);
 }
 
 resetKey.addEventListener('click', handleReset);
