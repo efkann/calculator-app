@@ -270,9 +270,7 @@ main {
 }
 
 .key:hover,
-.key:focus,
-.theme-input:hover,
-.theme-input:focus {
+.theme-input:hover {
   filter: brightness(125%);
 }
 

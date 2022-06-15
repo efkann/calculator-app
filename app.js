@@ -28,7 +28,7 @@ function applyUserPreferences() {
 function resetResultText() {
   result.classList.remove('result-calculated');
   result.removeAttribute('tabindex');
-  result.removeAttribute('aria-label');
+  document.querySelector('.result-sr-only')?.remove();
 }
 
 function writeToScreen(data) {
@@ -109,15 +109,20 @@ function handleEquals() {
     return;
   }
   const calculationStr = result.innerText.replace(/x/g, '*');
-  if (isNaN(eval(calculationStr)) || !isFinite(eval(calculationStr))) {
+  const calcResult = eval(calculationStr);
+  if (isNaN(calcResult) || !isFinite(calcResult)) {
     result.innerHTML = initialState; // Avoid zero division and infinity
     return;
   }
-  const resultStr = String(eval(calculationStr)); // I'm lazy so, eval works.
+  const resultStr = String(calcResult); // I'm lazy so, eval works.
+  const srOnlyEl = document.createElement('span');
+  srOnlyEl.classList.add('result-sr-only');
+  srOnlyEl.classList.add('sr-only');
   result.innerHTML = '';
   result.classList.add('result-calculated');
-  result.setAttribute('tabindex', 0);
-  result.setAttribute('aria-label', 'Calculated result is ' + resultStr);
+  result.setAttribute('tabindex', -1);
+  srOnlyEl.innerText = 'Calculated result is';
+  result.prepend(srOnlyEl);
   for (let i = 0; i < resultStr.length; i++) {
     const numberTextEl = document.createElement('span');
     numberTextEl.classList.add('number-text');
