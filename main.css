@@ -279,15 +279,14 @@ main {
 }
 
 @media (max-width: 480px) {
-  /* Fix issues with 320px-360px width mobile viewports */
-  :root {
-    --margin-calculator-left-right: 4px;
-  }
   .key {
     padding: 4px 12px;
   }
-  .calculator {
-    width: calc(100% - calc(var(--margin-calculator-left-right) * 2));
+}
+@media (max-width: 360px) {
+  /* Fix issues with < 360px width mobile viewports */
+  :root {
+    --margin-calculator-left-right: 8px;
   }
 }
 
