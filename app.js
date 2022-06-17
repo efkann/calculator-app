@@ -114,7 +114,8 @@ function handleEquals() {
     result.innerHTML = initialState; // Avoid zero division and infinity
     return;
   }
-  const resultStr = String(calcResult); // I'm lazy so, eval works.
+  let resultStr = String(calcResult); // I'm lazy so, eval works.
+  resultStr = Number(resultStr).toLocaleString();
   const srOnlyEl = document.createElement('span');
   srOnlyEl.classList.add('result-sr-only');
   srOnlyEl.classList.add('sr-only');
@@ -136,7 +137,7 @@ function handleEquals() {
 function handleDecimalPoint() {
   const numberTextEl = document.createElement('span');
   numberTextEl.classList.add('number-text');
-  numberTextEl.innerText = decPointKey.innerText.toLocaleString();
+  numberTextEl.innerText = decPointKey.innerText;
   if (result?.lastElementChild?.innerText === '.') {
     return; // Avoid two decimal points side to side.
   }
