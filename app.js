@@ -135,7 +135,7 @@ function handleEquals() {
 function handleDecimalPoint() {
   const numberTextEl = document.createElement('span');
   numberTextEl.classList.add('number-text');
-  numberTextEl.innerText = decPointKey.innerText;
+  numberTextEl.innerText = decPointKey.innerText.toLocaleString();
   if (result?.lastElementChild?.innerText === '.') {
     return; // Avoid two decimal points side to side.
   }
