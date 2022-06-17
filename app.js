@@ -121,11 +121,12 @@ function handleEquals() {
   result.innerHTML = '';
   result.classList.add('result-calculated');
   result.setAttribute('tabindex', -1);
-  srOnlyEl.innerText = 'Calculated result is';
+  srOnlyEl.innerText = 'Calculated result is ' + resultStr;
   result.prepend(srOnlyEl);
   for (let i = 0; i < resultStr.length; i++) {
     const numberTextEl = document.createElement('span');
     numberTextEl.classList.add('number-text');
+    numberTextEl.setAttribute('aria-hidden', true);
     numberTextEl.innerText = resultStr[i];
     result.appendChild(numberTextEl);
   }
