@@ -109,12 +109,12 @@ function handleEquals() {
     return;
   }
   const calculationStr = result.innerText.replace(/x/g, '*');
-  const calcResult = eval(calculationStr);
+  const calcResult = eval(calculationStr); // Shouldn't use eval but it works.
   if (isNaN(calcResult) || !isFinite(calcResult)) {
     result.innerHTML = initialState; // Avoid zero division and infinity
     return;
   }
-  let resultStr = String(calcResult); // I'm lazy so, eval works.
+  let resultStr = String(calcResult);
   resultStr = Number(resultStr).toLocaleString();
   const srOnlyEl = document.createElement('span');
   srOnlyEl.classList.add('result-sr-only');
