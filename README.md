@@ -10,7 +10,7 @@ The challenge is completed by following the style-guide.md and the screenshots s
 
 **Stack**: Vanilla JS, CSS, HTML.
 
-See this project live at https://calculator-app-eight-snowy.vercel.app/
+See this project live at https://calculator-app-eight-snowy.vercel.app
 
 ## Key features of the challenge
 
