@@ -8,9 +8,9 @@ This is a challenge chosen from [Frontend Mentor](https://www.frontendmentor.io/
 
 The challenge is completed by following the style-guide.md and the screenshots shared in the design folder.
 
-Stack: Vanilla JS, CSS, HTML.
+**Stack**: Vanilla JS, CSS, HTML.
 
-[Live Preview](https://calculator-app-eight-snowy.vercel.app/)
+See this project live at https://calculator-app-eight-snowy.vercel.app/
 
 ## Key features of the challenge
 
